@@ -20,7 +20,7 @@ class UserController(
     private val userService: UserService,
 ) {
     @GetMapping("/{id}")
-    fun getUser(
+    fun getUserById(
         @PathVariable id: Long,
     ): ResponseEntity<ReadUserDto> {
         try {
