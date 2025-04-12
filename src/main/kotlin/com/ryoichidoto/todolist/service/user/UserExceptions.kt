@@ -6,13 +6,17 @@ object ExceptionMessages {
     const val USER_NOT_FOUND_EMAIL_FORMAT = "User with email='%s' not found."
 }
 
+sealed class UserException(
+    message: String,
+) : RuntimeException(message)
+
 class UserAlreadyExistsException(
     email: String,
-) : RuntimeException(ExceptionMessages.USER_ALREADY_EXISTS_FORMAT.format(email))
+) : UserException(ExceptionMessages.USER_ALREADY_EXISTS_FORMAT.format(email))
 
 class UserNotFoundException private constructor(
     message: String,
-) : RuntimeException(message) {
+) : UserException(message) {
     companion object {
         fun byId(id: Long) =
             UserNotFoundException(

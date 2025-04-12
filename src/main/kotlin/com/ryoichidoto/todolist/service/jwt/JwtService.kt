@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import java.time.Instant
 import java.time.temporal.ChronoUnit
-import java.util.*
+import java.util.Date
 
 @Service
 class JwtService(
     @Value("\${jwt.secret}")
-    private val secret: String
+    private val secret: String,
 ) {
     private val algorithm = Algorithm.HMAC256(secret)
     private val verifier = JWT.require(algorithm).build()

@@ -1,6 +1,5 @@
-package com.ryoichidoto.todolist.web.auth
+package com.ryoichidoto.todolist.web.core
 
-import com.ryoichidoto.todolist.web.core.API_PREFIX
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -17,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 class SecurityConfiguration(
     private val jwtAuthenticationFilter: JwtAuthenticationFilter,
-    private val userDetailsService: UserDetailsService
+    private val userDetailsService: UserDetailsService,
 ) {
     @Bean
     fun authenticationManager(http: HttpSecurity): AuthenticationManager {

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class UserMapper(
-    private val passwordEncoder: PasswordEncoder
+    private val passwordEncoder: PasswordEncoder,
 ) {
     fun fromCreateDto(dto: CreateUserDto): User =
         User(

@@ -1,4 +1,4 @@
-package com.ryoichidoto.todolist.web.auth
+package com.ryoichidoto.todolist.web.core
 
 import com.ryoichidoto.todolist.service.jwt.JwtService
 import jakarta.servlet.FilterChain

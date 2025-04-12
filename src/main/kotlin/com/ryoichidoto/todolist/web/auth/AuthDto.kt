@@ -10,9 +10,9 @@ data class LoginRequest(
     val email: String,
     @field:NotBlank(message = "Password is required.")
     @field:Size(min = 6, max = 100, message = "Password must be at least 6 characters.")
-    val password: String
+    val password: String,
 )
 
 data class TokenResponse(
-    val token: String
+    val token: String,
 )

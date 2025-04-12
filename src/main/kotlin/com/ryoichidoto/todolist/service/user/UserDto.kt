@@ -13,7 +13,7 @@ data class CreateUserDto(
     val email: String,
     @field:NotBlank(message = "Password is required.")
     @field:Size(min = 6, max = 100, message = "Password must be at least 6 characters.")
-    val password: String
+    val password: String,
 )
 
 data class UpdateUserDto(
@@ -32,5 +32,5 @@ data class UpdateUserDto(
 data class ReadUserDto(
     val id: Long,
     val username: String,
-    val email: String
+    val email: String,
 )
