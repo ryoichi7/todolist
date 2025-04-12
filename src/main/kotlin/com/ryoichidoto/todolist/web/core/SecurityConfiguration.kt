@@ -33,14 +33,16 @@ class SecurityConfiguration(
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { auth ->
                 auth
-                    .requestMatchers("$API_PREFIX/auth/**")
-                    .permitAll()
-                    .requestMatchers("$API_PREFIX/ping")
-                    .permitAll()
+                    .requestMatchers(
+                        "$API_PREFIX/auth/**",
+                        "$API_PREFIX/ping",
+                        "/swagger-ui.html",
+                        "/swagger-ui/**",
+                        "/v3/api-docs/**",
+                    ).permitAll()
                     .anyRequest()
                     .authenticated()
-            }
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
+            }.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
             .exceptionHandling {
                 it.authenticationEntryPoint { _, response, _ ->
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized")
